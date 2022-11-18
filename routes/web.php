@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\RoleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,13 +24,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('/admin')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('index');
+    Route::resource('/roles', RoleController::class);
+    Route::resource('/permissions', PermissionController::class);
 });
-
-Route::middleware(['auth', 'role:writer'])->group(function () {
-    Route::get('/writers', [AdminController::class, 'index'])->name('admin.index');
-});
-
 
 require __DIR__ . '/auth.php';
