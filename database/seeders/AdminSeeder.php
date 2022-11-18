@@ -16,9 +16,11 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // create row user in roles table
         $userRole = Role::create(['name'=>'user']);
+        // create row admin in roles table
         $adminRole = Role::create(['name'=>'admin']);
+        // create row admin in roles table
         User::create([
             'name' => 'Admin',
             'email' => 'admin@admin.com',
