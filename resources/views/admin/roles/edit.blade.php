@@ -33,9 +33,9 @@
         <div class="flex m-2 p-2">
             <h2>Permissions</h2>
             <div class="max-w-md mx-auto">
-                {{-- @foreach ($role->permissions as $rp)
+                @foreach ($role->permissions as $rp)
                     <span class="m-2 p-2 bg-indigo-300 rounded-md">{{ $rp->name }}</span>
-                @endforeach --}}
+                @endforeach
             </div>
         </div>
         <div class="max-w-md mx-auto bg-gray-100 p-6 mt-12 rounded">
@@ -50,10 +50,10 @@
                             border-2 border-gray-100
                             focus:text-gray-500 focus:outline-none focus:border-gray-200 rounded-md"
                             multiple>
-                            {{-- @foreach ($permissions as $permission)
+                            @foreach ($permissions as $permission)
                                 <option value="{{ $permission->id }}" @selected($role->hasPermission($permission->name))>
                                     {{ $permission->name }}</option>
-                            @endforeach --}}
+                            @endforeach
                         </select>
                     </label>
 
