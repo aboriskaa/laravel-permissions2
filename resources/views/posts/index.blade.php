@@ -34,8 +34,13 @@
                             </th>
                             <td class="px-6 py-4 text-right">
                                 <div class="flex space-x-2">
+                                    
+                                    @can('update', $post)
                                     <a href="{{ route('posts.edit', $post->id) }}"
                                         class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                    @endcan
+
+                                    @can('delete', $post)
                                     <form method="POST" action="{{ route('posts.destroy', $post->id) }}"
                                         onsubmit="return confirm('Are you sure?');">
                                         @csrf
@@ -43,6 +48,8 @@
                                         <button type="submit"
                                             class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
                                     </form>
+                                    @endcan
+                                 
                                 </div>
                             </td>
                         </tr>
